@@ -4,21 +4,23 @@ Command-line tool for installing and managing DashKit agent definitions in your 
 
 ## Installation
 
-### From GitHub Packages
+### Global Installation (Recommended)
+
+Install globally to use `dashkit` from anywhere on your system.
+
+**From GitHub Packages:**
 
 Even publicly-hosted packages on GitHub Packages require authentication using a [Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token). Creating one with `packages:read` permission allows you to install this package.
 
-Add Github registry
 ```bash
+# Configure GitHub Packages registry
 npm config set @sfwd-dashapp:registry https://npm.pkg.github.com
-```
 
-Install the package globally
-```bash
+# Install globally
 npm install -g @sfwd-dashapps/dashkit
 ```
 
-### From Source
+**From Source:**
 
 ```bash
 git clone https://github.com/sfwd-dashapps/dashkit.git
@@ -26,6 +28,52 @@ cd dashkit/packages/dashkit-cli
 npm install
 npm run build
 npm link
+```
+
+After global installation, the `dashkit` command is available anywhere:
+
+```bash
+dashkit --version
+dashkit init --here
+```
+
+### Local Installation (Project-Level)
+
+Install as a dev dependency in your project.
+
+```bash
+# Install in your project
+npm install --save-dev @sfwd-dashapps/dashkit
+```
+
+After local installation, run `dashkit` using `npx` or the local `.bin` directory:
+
+```bash
+# Using npx (recommended)
+npx dashkit --version
+npx dashkit init --here
+
+# Or directly from node_modules
+./node_modules/.bin/dashkit --version
+```
+
+You can also add scripts to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "agents:init": "dashkit init --here",
+    "agents:update": "dashkit update",
+    "agents:status": "dashkit status"
+  }
+}
+```
+
+Then run:
+
+```bash
+npm run agents:init
+npm run agents:status
 ```
 
 ## Quick Start
