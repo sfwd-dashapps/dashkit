@@ -1,4 +1,4 @@
-.claude/settings.local.json
+.claude/*.local.*
 
 **example-app
 **/*.tgz
