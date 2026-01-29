@@ -12,6 +12,15 @@ DashKit enforces a documentation-driven approach to building complex features th
 
 These agents coordinate to produce structured documentation in the `plans/` directory that guides feature development.
 
+## Should I use DashKit?
+
+DashKit is opinionated and may not serve your needs. It is used to automate the planning and project management we do at SprintFWD/DashApps. It does not currently serve every workflow, and is not yet extensible. 
+
+DashKit is modeled after [SpecKit](https://github.com/github/spec-kit), a "Spec Driven Development" toolset by Github.
+
+> [!NOTE]
+> When in doubt, use [SpecKit](https://github.com/github/spec-kit)
+
 ## Repository Structure
 
 ```
