@@ -6,6 +6,8 @@ Command-line tool for installing and managing DashKit agent definitions in your 
 
 ### From GitHub Packages
 
+Even publicly-hosted packages on GitHub Packages require authentication using a [Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token). Creating one with `packages:read` permission allows you to install this package.
+
 Add Github registry
 ```bash
 npm config set @sfwd-dashapp:registry https://npm.pkg.github.com
