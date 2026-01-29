@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(wc:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)"
     ]
   }
 }
