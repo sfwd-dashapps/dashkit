@@ -25,50 +25,7 @@ dashkit/
 
 ## Installation
 
-### Using the CLI (Recommended)
-
-The DashKit CLI installs agent definitions into your project:
-
-```bash
-# Install the CLI globally
-npm install -g @sfwd-dashapps/dashkit
-
-# Install agents in your project
-cd your-project
-dashkit init --here
-```
-
-### Manual Installation
-
-Copy agent files from this repository into your project:
-
-```bash
-# Copy Claude agents
-cp -r .claude/agents/ your-project/.claude/agents/
-
-# Copy GitHub agents
-cp -r .github/agents/ your-project/.github/agents/
-```
-
-## Usage
-
-Once installed, invoke agents through Claude Code or GitHub Copilot:
-
-### Claude Code
-
-```bash
-# Invoke an agent
-@specification-agent Create a user authentication system
-
-# Agents are available in chat or inline
-```
-
-### GitHub Copilot
-
-```bash
-# In VS Code or CLI
-/specification-agent Create a user authentication system
-```
+See [package instructions](packages/dashkit-cli/README.md) for installation and usage.
 
 ## Agent Workflow
 
@@ -86,19 +43,6 @@ Each feature produces:
 - `OVERVIEW.md` - High-level summary for stakeholders
 - `RESEARCH.md` - Technical analysis and existing patterns
 - `[ticket-number]/PLAN.md` - Step-by-step implementation plans
-
-## CLI Tool
-
-The `dashkit` CLI manages agent installations:
-
-```bash
-dashkit init       # Install agents
-dashkit update     # Update to latest version
-dashkit status     # Check installation status
-dashkit version    # Show version information
-```
-
-See [packages/dashkit-cli/README.md](packages/dashkit-cli/README.md) for full CLI documentation.
 
 ## Integration Requirements
 
