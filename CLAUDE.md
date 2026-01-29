@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository defines a **structured feature planning agent framework** for agentic coding. It uses specialized agents built for Claude Code or Github Copilot that work together to guide feature development from initial specification through to implementation planning. The framework enforces a disciplined, documentation-driven approach to building complex features.
 
+This repository also includes a **CLI tool** (`packages/dashkit-cli/`) that allows users to install agent definitions into their own projects.
+
 ## Architecture Overview
 
 This is a **meta-repository** that contains agent definitions which operate in the context of your actual application codebase. The agents coordinate to produce comprehensive documentation that guides feature development.
@@ -37,13 +39,22 @@ specification-agent (Epic owner)
 ### Directory Structure
 
 ```
-plans/
-  └── [feature-name-slug]/
-      ├── SPECIFICATION.md    # User stories, acceptance criteria (specification-agent)
-      ├── OVERVIEW.md         # High-level summary for stakeholders (specification-agent)
-      ├── RESEARCH.md         # Technical analysis, existing patterns (research-agent)
-      └── [jira-ticket-number]/
-          └── PLAN.md         # Implementation steps, test specs (planning-agent)
+dashkit/
+├── .claude/agents/          # Claude Code agent definitions
+├── .github/agents/          # GitHub Copilot agent definitions
+├── packages/
+│   └── dashkit-cli/         # CLI tool for distributing agents
+│       ├── src/             # TypeScript source code
+│       ├── templates/       # Agent templates bundled in package
+│       ├── __tests__/       # Test suite (Vitest)
+│       └── dist/            # Compiled output
+└── plans/
+    └── [feature-name-slug]/
+        ├── SPECIFICATION.md    # User stories, acceptance criteria (specification-agent)
+        ├── OVERVIEW.md         # High-level summary for stakeholders (specification-agent)
+        ├── RESEARCH.md         # Technical analysis, existing patterns (research-agent)
+        └── [jira-ticket-number]/
+            └── PLAN.md         # Implementation steps, test specs (planning-agent)
 ```
 
 ## Agent Definitions
@@ -202,6 +213,45 @@ When updating agent definitions:
 3. Keep the orchestration flow clear
 4. Update this CLAUDE.md if workflow changes
 5. Test agents work together correctly
+
+## CLI Tool Development
+
+The `packages/dashkit-cli/` directory contains a TypeScript CLI tool published to GitHub Packages as `@sfwd-dashapps/dashkit`.
+
+### CLI Tool Architecture
+
+- **Language**: TypeScript with ES modules
+- **Test Framework**: Vitest (native ESM support)
+- **Commands**: init, update, status, version
+- **Distribution**: Templates bundled directly in package
+- **Package Manager**: npm via GitHub Packages
+
+### Working on the CLI
+
+```bash
+cd packages/dashkit-cli
+npm install
+npm run build      # Compile TypeScript
+npm test           # Run test suite
+npm link           # Install globally for testing
+```
+
+### CLI Design Principles
+
+1. **Monolithic Package**: Agent templates bundled in `templates/` directory
+2. **Version Tracking**: `dashkit.config.js` tracks installed framework version
+3. **Update Detection**: Semantic versioning with semver library
+4. **TDD Approach**: All tests written before implementation
+5. **Clear Errors**: Descriptive error messages with actionable guidance
+
+### CLI Test Coverage
+
+- 59 tests total (55 passing, 4 skipped)
+- Unit tests for all utility modules
+- Integration tests for all commands
+- 93% pass rate with documented skipped tests
+
+See `packages/dashkit-cli/README.md` for full CLI documentation.
 
 ## Key Principles
 

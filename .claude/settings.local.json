@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(wc:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd DashKit CLI tool for agent distribution\n\nImplement a TypeScript CLI tool that installs and manages DashKit agent\ndefinitions in user projects. The tool provides init, update, status, and\nversion commands with comprehensive error handling.\n\nFeatures:\n- CLI commands: init \\(install\\), update \\(upgrade\\), status, version\n- Automatic git repository detection with --here flag override\n- Version tracking via dashkit.config.js\n- Update detection using semantic versioning\n- Agent templates bundled in package\n\nArchitecture:\n- TypeScript with ES modules \\(Node 18+\\)\n- Vitest test framework \\(native ESM support\\)\n- Commander.js for CLI parsing\n- Monolithic package with templates included\n- Published to GitHub Packages as @sfwd-dashapps/dashkit\n\nTesting:\n- 59 tests total \\(55 passing, 4 skipped\\)\n- Unit tests for utilities \\(git, config, version, files, errors\\)\n- Integration tests for all commands\n- TDD approach: tests written before implementation\n\nDocumentation:\n- Main project README with installation and usage\n- CLI-specific README with command reference\n- Updated CLAUDE.md with CLI development guidance\n\nTechnical Decisions:\n- Switched from Jest to Vitest for better ESM/import.meta support\n- Monolithic package \\(templates bundled\\) over registry-based approach\n- JavaScript config files for user-editability\n- Cache-busting imports for test reliability\n\nCo-Authored-By: Claude \\(us.anthropic.claude-sonnet-4-5-20250929-v1:0\\) <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
